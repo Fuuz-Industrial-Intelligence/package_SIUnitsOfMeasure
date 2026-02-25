@@ -1,0 +1,103 @@
+# ============================================================
+# Fuuz Platform — Delete Seeded Unit of Measure Records
+# ============================================================
+# Run these mutations IN ORDER before importing a unit package.
+# The platform seeds default UnitConversion, Unit, and UnitType
+# records that will conflict with package imports.
+#
+# Order matters:
+#   1. UnitConversions (has FKs to Unit)
+#   2. Units (has FKs to UnitType)
+#   3. UnitTypes
+# ============================================================
+
+# --- Step 1: Delete seeded UnitConversions ---
+
+mutation DeleteSeededUnitConversions {
+  deleteUnitConversion(payload: [
+    { where: { id: "seedDToH" } },
+    { where: { id: "seedFtToIn" } },
+    { where: { id: "seedGToMg" } },
+    { where: { id: "seedHToMin" } },
+    { where: { id: "seedInToCm" } },
+    { where: { id: "seedKgToG" } },
+    { where: { id: "seedKgToLb" } },
+    { where: { id: "seedKmToM" } },
+    { where: { id: "seedLbToOz" } },
+    { where: { id: "seedMinToS" } },
+    { where: { id: "seedMiToFt" } },
+    { where: { id: "seedMToCm" } },
+    { where: { id: "seedMToMm" } },
+    { where: { id: "seedOzToToz" } },
+    { where: { id: "seedSToMs" } },
+    { where: { id: "seedStToLb" } },
+    { where: { id: "seedTlbToToz" } },
+    { where: { id: "seedWkToD" } },
+    { where: { id: "seedYrToD" } },
+    { where: { id: "seedYrToMo" } }
+  ]) {
+    id
+  }
+}
+
+# --- Step 2: Delete seeded Units ---
+
+mutation DeleteSeededUnits {
+  deleteUnit(payload: [
+    { where: { id: "cm" } },
+    { where: { id: "d" } },
+    { where: { id: "ea" } },
+    { where: { id: "ft" } },
+    { where: { id: "g" } },
+    { where: { id: "h" } },
+    { where: { id: "in" } },
+    { where: { id: "kg" } },
+    { where: { id: "km" } },
+    { where: { id: "lb" } },
+    { where: { id: "m" } },
+    { where: { id: "mg" } },
+    { where: { id: "mi" } },
+    { where: { id: "min" } },
+    { where: { id: "mm" } },
+    { where: { id: "mo" } },
+    { where: { id: "ms" } },
+    { where: { id: "oz" } },
+    { where: { id: "pc" } },
+    { where: { id: "s" } },
+    { where: { id: "st" } },
+    { where: { id: "tlb" } },
+    { where: { id: "toz" } },
+    { where: { id: "USD" } },
+    { where: { id: "wk" } },
+    { where: { id: "yd" } },
+    { where: { id: "yr" } }
+  ]) {
+    id
+  }
+}
+
+# --- Step 3: Delete seeded UnitTypes ---
+
+mutation DeleteSeededUnitTypes {
+  deleteUnitType(payload: [
+    { where: { id: "Amount" } },
+    { where: { id: "Area" } },
+    { where: { id: "Currency" } },
+    { where: { id: "Density" } },
+    { where: { id: "Energy" } },
+    { where: { id: "FlowRate" } },
+    { where: { id: "Force" } },
+    { where: { id: "Frequency" } },
+    { where: { id: "Length" } },
+    { where: { id: "Power" } },
+    { where: { id: "Pressure" } },
+    { where: { id: "Speed" } },
+    { where: { id: "Temperature" } },
+    { where: { id: "Time" } },
+    { where: { id: "Torque" } },
+    { where: { id: "Volume" } },
+    { where: { id: "Weight" } }
+  ]) {
+    id
+  }
+}
